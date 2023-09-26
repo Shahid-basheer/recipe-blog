@@ -5,7 +5,6 @@ const Category = require("../models/category");
 // ========== GET HOMEPAGE ===========
 exports.homePage = async (req, res) => {
     try {
-
         const limitNumber = 5;
         const categories = await Category.find({}).limit(limitNumber);
         const latest = await Recipe.find({}).sort({ _id: -1 }).limit(limitNumber);
@@ -17,7 +16,7 @@ exports.homePage = async (req, res) => {
 
     } catch (e) {
 
-        res.status(500).send(e, 'Internal server error')
+        res.status(500).json(e)
     }
 }
 // ============ GET CATEGORIES ============
